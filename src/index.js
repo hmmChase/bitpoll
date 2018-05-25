@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
+import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const devTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-const store = createStore(rootReducer, devTools);
+const store = createStore(rootReducer, devToolsEnhancer());
 
 const app = (
   <Provider store={store}>
