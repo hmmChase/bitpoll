@@ -3,10 +3,11 @@ export const logIn = user => ({
   user
 });
 
-export const logOut = () => {
-  console.log('logoutaction');
+export const logOut = () => ({
+  type: 'LOG_OUT'
+});
 
-  return {
-    type: 'LOG_OUT'
-  };
-};
+export const storeContributors = contributors => ({
+  type: 'STORE_CONTRIBUTORS',
+  contributors
+});
