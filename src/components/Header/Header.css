@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  align-items: center;
+
+  background: #cbccdb;
+  justify-content: space-around;
+  color: #f0543f;
+}
+
+h1 {
+  font-family: 'Bitter', serif;
+}
+
+.signed-in-state {
+  display: flex;
+  align-items: center;
+}
+
+.sign-in-btn {
+  background: #3a3133;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.sign-out-btn {
+  background: #3a3133;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.sign-in-btn:hover {
+  background: #000;
+}
+
+.sign-in-btn-txt {
+  margin-left: 5px;
+}
+
+.welcome-text {
+  color: #000;
+}
