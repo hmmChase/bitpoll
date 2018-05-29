@@ -42,7 +42,7 @@ class App extends Component {
     };
     this.props.logIn(cleanUser);
     this.props.fetchContributors(
-      'https://api.github.com/repos/bitcoin/bitcoin/contributors?page=1&per_page=100'
+      'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
     );
   };
 
