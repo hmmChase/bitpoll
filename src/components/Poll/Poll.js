@@ -18,6 +18,10 @@ class Poll extends Component {
   }
 
   componentDidMount = () => {
+    this.watchChanges();
+  };
+
+  watchChanges = () => {
     // get refs
     const pollRef = firebase
       .database()
@@ -56,33 +60,31 @@ class Poll extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
-    this.increment(event.target.name);
+    this.increment();
   };
 
-  increment = name => {
-    this.setState({
-      [this.state.selected]: this.state[this.state.selected]++
-    });
+  increment = () => {
+    let optionValue = this.state[this.state.selected];
+    const incrementOption = optionValue + 1;
+    this.updateResult(incrementOption);
+  };
 
+  updateResult = incrementOption => {
+    this.setState({
+      [this.state.selected]: incrementOption
+    });
+    this.updateDB(incrementOption);
+  };
+
+  updateDB = incrementOption => {
     const pollRef = firebase
       .database()
       .ref()
       .child('poll');
 
     pollRef.update({
-      [this.state.selected]: this.state[this.state.selected]
+      [this.state.selected]: incrementOption
     });
-
-    // const option1Ref = pollRef.child('option1');
-    // const option2Ref = pollRef.child('option2');
-    // if (this.state.selected === 'option1') {
-    //   option1Ref.set(this.state[this.state.selected]++);
-    // }
-    // if (this.state.selected === 'option2') {
-    //   option2Ref.set(this.state[this.state.selected]++);
-    // }
-    // console.log(this.state[this.state.selected]++);
   };
 
   displayResults = () => {};
