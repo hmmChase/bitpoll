@@ -18,20 +18,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // auth.onAuthStateChanged(async user => {
-    //   if (user) {
-    //     if (this.props.userId === undefined) {
-    //       this.props.logIn(user);
-    //     }
-    //     console.log('cdm-before: ', this.props.contributors.length);
-    //     if (this.props.contributors.length === 0) {
-    //       this.fetchContributors(
-    //         'https://api.github.com/repos/bitcoin/bitcoin/contributors?page=1&per_page=100'
-    //       );
-    //       console.log('cdm-after: ', this.props.contributors.length);
-    //     }
-    //   }
-    // });
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        if (this.props.userId === undefined) {
+          const cleanUser = {
+            userId: user.providerData[0].uid,
+            displayName: user.providerData[0].displayName
+          };
+          this.props.logIn(cleanUser);
+        }
+
+        // console.log('cdm-before: ', this.props.contributors.length);
+
+        if (this.props.contributors.length === 0) {
+          this.props.getContributors();
+          // console.log('cdm-after: ', this.props.contributors.length);
+        }
+      }
+    });
   }
 
   login = async () => {
@@ -41,9 +45,9 @@ class App extends Component {
       displayName: user.providerData[0].displayName
     };
     this.props.logIn(cleanUser);
-    this.props.fetchContributors(
-      'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
-    );
+    // this.props.fetchContributors(
+    //   'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
+    // );
   };
 
   logout = () => {
@@ -92,8 +96,12 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   logIn: user => dispatch(actions.logIn(user)),
   logOut: () => dispatch(actions.logOut()),
-  storeContributors: contributors =>
-    dispatch(actions.storeContributors(contributors))
+  getContributors: () =>
+    dispatch(
+      actions.getContributors(
+        'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
+      )
+    )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
