@@ -18,47 +18,40 @@ class App extends Component {
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged(async user => {
+    this.refreshLogin();
+  }
+
+  refreshLogin = () => {
+    auth.onAuthStateChanged(user => {
       if (user) {
-        if (this.props.userId === undefined) {
-          const cleanUser = {
-            userId: user.providerData[0].uid,
-            displayName: user.providerData[0].displayName
-          };
-          this.props.logIn(cleanUser);
-        }
-
-        // console.log('cdm-before: ', this.props.contributors.length);
-
-        if (this.props.contributors.length === 0) {
-          this.props.getContributors();
-          // console.log('cdm-after: ', this.props.contributors.length);
-        }
+        this.setLogin(user);
       }
     });
-  }
+  };
 
   login = async () => {
     const user = await this.authGitHub();
-    const cleanUser = {
-      userId: user.providerData[0].uid,
-      displayName: user.providerData[0].displayName
-    };
-    this.props.logIn(cleanUser);
-    // this.props.fetchContributors(
-    //   'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
-    // );
-  };
-
-  logout = () => {
-    auth.signOut().then(() => {
-      this.props.logOut();
-    });
+    this.setLogin(user);
   };
 
   authGitHub = () => {
     return auth.signInWithPopup(provider).then(result => {
       return result.user;
+    });
+  };
+
+  setLogin = user => {
+    const cleanUser = {
+      userId: user.providerData[0].uid,
+      displayName: user.providerData[0].displayName
+    };
+    this.props.storeUser(cleanUser);
+    this.props.getContributors();
+  };
+
+  logOut = () => {
+    auth.signOut().then(() => {
+      this.props.storeLogOut();
     });
   };
 
@@ -72,7 +65,7 @@ class App extends Component {
               Welcome {this.props.displayName}
             </span>
 
-            <div className="sign-out-btn" onClick={this.logout}>
+            <div className="sign-out-btn" onClick={this.logOut}>
               <span>Log out</span>
             </div>
           </div>
@@ -94,8 +87,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  logIn: user => dispatch(actions.logIn(user)),
-  logOut: () => dispatch(actions.logOut()),
+  storeUser: user => dispatch(actions.storeUser(user)),
+  storeLogOut: () => dispatch(actions.storeLogOut()),
   getContributors: () =>
     dispatch(
       actions.getContributors(
