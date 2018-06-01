@@ -11,3 +11,8 @@ export const storeContributors = contributors => ({
   type: 'STORE_CONTRIBUTORS',
   contributors
 });
+
+export const getContributors = url => ({
+  type: 'GET_CONTRIBUTORS',
+  url
+});

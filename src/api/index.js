@@ -30,25 +30,25 @@ export const parseLinkHeader = header => {
   return links;
 };
 
-// export const allContributors = [];
+export const cleanContributors = contributors => {
+  return contributors.reduce((contributersObj, contributor) => {
+    contributersObj[contributor.id] = contributor;
+    return contributersObj;
+  }, {});
+};
 
-// export const fetchContributors = async url => {
-//   const response = await doFetch(url);
-//   const data = await response.json();
-//   const cleanContributors = data.map(contributor => {
-//     return { [contributor.id]: { ...contributor } };
-//   });
+export const fetchContributors = async url => {
+  const response = await doFetch(url);
+  const contributors = await response.json();
+  const cleanedContributors = cleanContributors(contributors);
 
-//   allContributors.push(cleanContributors);
-//   console.log(allContributors);
+  this.props.storeContributors(cleanedContributors);
 
-//   // this.props.storeContributors(cleanContributors);
+  const links = await response.headers.get('Link');
+  const parsedLinks = parseLinkHeader(links);
+  let next = parsedLinks.next;
 
-//   const links = await response.headers.get('Link');
-//   const parsedLinks = parseLinkHeader(links);
-//   let next = parsedLinks.next;
-
-//   if (next) {
-//     await fetchContributors(next);
-//   }
-// };
+  if (next) {
+    await this.fetchContributors(next);
+  }
+};
