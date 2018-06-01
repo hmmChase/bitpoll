@@ -1,10 +1,10 @@
-export const logIn = user => ({
-  type: 'LOG_IN',
+export const storeUser = user => ({
+  type: 'STORE_USER',
   user
 });
 
-export const logOut = () => ({
-  type: 'LOG_OUT'
+export const storeLogOut = () => ({
+  type: 'STORE_LOG_OUT'
 });
 
 export const storeContributors = contributors => ({
@@ -15,4 +15,9 @@ export const storeContributors = contributors => ({
 export const getContributors = url => ({
   type: 'GET_CONTRIBUTORS',
   url
+});
+
+export const storeIsContributor = boolean => ({
+  type: 'STORE_IS_CONTRIBUTOR',
+  boolean
 });

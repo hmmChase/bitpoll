@@ -17,7 +17,7 @@ export function* fetchContributors(action) {
   }
 }
 
-export function* listenForgetContributors() {
+export function* listenForGetContributors() {
   yield takeLatest('GET_CONTRIBUTORS', fetchContributors);
 }
-export default listenForgetContributors;
+export default listenForGetContributors;
