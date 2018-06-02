@@ -21,3 +21,7 @@ export const storeIsContributor = boolean => ({
   type: 'STORE_IS_CONTRIBUTOR',
   boolean
 });
+
+export const determineContributor = () => ({
+  type: 'DET_CONTRIBUTOR'
+});

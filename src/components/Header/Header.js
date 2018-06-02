@@ -41,18 +41,28 @@ class App extends Component {
   };
 
   setLogin = user => {
-    const cleanUser = {
-      userId: user.providerData[0].uid,
-      displayName: user.providerData[0].displayName
-    };
+    const cleanUser = this.cleanUser(user);
     this.props.storeUser(cleanUser);
     this.props.getContributors();
+    // console.log('contrbs: ', this.props.contributors);
+
+    this.determineContributor();
   };
+
+  cleanUser = user => ({
+    userId: user.providerData[0].uid,
+    displayName: user.providerData[0].displayName
+  });
 
   logOut = () => {
     auth.signOut().then(() => {
       this.props.storeLogOut();
     });
+  };
+
+  determineContributor = async () => {
+    // console.log('userId', this.props.userId);
+    // await console.log('contributors', this.props.contributors);
   };
 
   render() {
@@ -94,7 +104,8 @@ export const mapDispatchToProps = dispatch => ({
       actions.getContributors(
         'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
       )
-    )
+    ),
+  determineContributor: () => dispatch(actions.determineContributor())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
