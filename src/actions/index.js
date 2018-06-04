@@ -22,6 +22,7 @@ export const storeIsContributor = boolean => ({
   boolean
 });
 
-export const determineContributor = () => ({
-  type: 'DET_CONTRIBUTOR'
+export const storeIfVoted = boolean => ({
+  type: 'STORE_IF_VOTED',
+  boolean
 });

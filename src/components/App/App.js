@@ -1,33 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions/index';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Poll from '../Poll/Poll';
 import './App.css';
 
-export class App extends Component {
-  componentDidMount = () => {};
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Route exact path="/" component={Poll} />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <button onClick={this.props.getContributors}>Fetch contributors</button>
-        <main>
-          <Poll />
-        </main>
-      </div>
-    );
-  }
-}
-
-export const mapDispatchToProps = dispatch => ({
-  getContributors: () =>
-    dispatch(
-      actions.getContributors(
-        'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
-      )
-    )
-});
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

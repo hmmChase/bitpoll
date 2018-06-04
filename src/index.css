@@ -1,5 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Bitter|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu:700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
 
 body {
+  min-height: 100%;
   font-family: 'Open Sans', sans-serif;
+  background: #f6f7fb;
 }

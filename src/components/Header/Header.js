@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase, { auth, provider } from '../../utils/firebase';
+import { auth, provider } from '../../utils/firebase';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import brands from '@fortawesome/fontawesome-free-brands';
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
+import faGithub from '@fortawesome/fontawesome-free-brands';
+import faCheck from '@fortawesome/fontawesome-free-regular';
 import * as actions from '../../actions/index';
 import './Header.css';
-
-fontawesome.library.add(faGithub);
 
 class App extends Component {
   constructor(props) {
@@ -44,9 +42,6 @@ class App extends Component {
     const cleanUser = this.cleanUser(user);
     this.props.storeUser(cleanUser);
     this.props.getContributors();
-    // console.log('contrbs: ', this.props.contributors);
-
-    this.determineContributor();
   };
 
   cleanUser = user => ({
@@ -60,20 +55,30 @@ class App extends Component {
     });
   };
 
-  determineContributor = async () => {
-    // console.log('userId', this.props.userId);
-    // await console.log('contributors', this.props.contributors);
-  };
-
   render() {
     return (
       <header>
-        <h1 className="App-title">Bitpoll</h1>
+        <div>
+          <h1 className="App-title">
+            <FontAwesomeIcon
+              className="logo-icon"
+              icon={['far', 'check-circle']}
+            />
+            Bitpoll
+          </h1>
+        </div>
+
         {this.props.userId ? (
           <div className="signed-in-state">
-            <span className="welcome-text">
-              Welcome {this.props.displayName}
-            </span>
+            <div className="log-in-out">
+              <p className="welcome-text">Welcome {this.props.displayName}</p>
+              {this.props.isContributor && (
+                <p className="verifed-text">
+                  <FontAwesomeIcon icon={['far', 'check-circle']} />verified
+                  contributor
+                </p>
+              )}
+            </div>
 
             <div className="sign-out-btn" onClick={this.logOut}>
               <span>Log out</span>
@@ -93,6 +98,7 @@ class App extends Component {
 export const mapStateToProps = state => ({
   displayName: state.user.displayName,
   userId: state.user.userId,
+  isContributor: state.user.isContributor,
   contributors: state.contributors
 });
 
@@ -104,8 +110,7 @@ export const mapDispatchToProps = dispatch => ({
       actions.getContributors(
         'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
       )
-    ),
-  determineContributor: () => dispatch(actions.determineContributor())
+    )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
