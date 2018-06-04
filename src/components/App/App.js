@@ -8,7 +8,14 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Route exact path="/" component={Poll} />
+      <main>
+        <p className="description">
+          Bitpoll helps determine consensus within the Bitcoin development
+          community by providing polls rescricted to developers of the Bitcoin
+          project.
+        </p>
+        <Route exact path="/" component={Poll} />
+      </main>
     </div>
   );
 };
