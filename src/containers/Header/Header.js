@@ -58,15 +58,13 @@ class App extends Component {
   render() {
     return (
       <header>
-        <div>
-          <h1 className="App-title">
-            <FontAwesomeIcon
-              className="logo-icon"
-              icon={['far', 'check-circle']}
-            />
-            Bitpoll
-          </h1>
-        </div>
+        <h1 className="App-title">
+          <FontAwesomeIcon
+            className="logo-icon"
+            icon={['far', 'check-circle']}
+          />
+          Bitpoll
+        </h1>
 
         {this.props.userId ? (
           <div className="signed-in-state">
@@ -88,7 +86,7 @@ class App extends Component {
           </div>
         ) : (
           <div className="sign-in-btn" onClick={this.login}>
-            <FontAwesomeIcon icon={['fab', 'github']} />
+            <FontAwesomeIcon className="github-icon" icon={['fab', 'github']} />
             <span className="sign-in-btn-txt">Sign in with GitHub</span>
           </div>
         )}
