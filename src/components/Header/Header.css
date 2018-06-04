@@ -1,14 +1,20 @@
 header {
   display: flex;
   align-items: center;
-
   background: #cbccdb;
   justify-content: space-around;
-  color: #f0543f;
+  width: 100%;
 }
 
 h1 {
-  font-family: 'Bitter', serif;
+  font-family: 'Ubuntu', serif;
+  font-weight: 800px;
+  font-style: italic;
+  color: #4d4d4d;
+}
+
+.logo-icon {
+  color: #f7931a;
 }
 
 .signed-in-state {
@@ -47,6 +53,17 @@ h1 {
   margin-left: 5px;
 }
 
+.log-in-out {
+  position: relative;
+}
+
 .welcome-text {
   color: #000;
+}
+
+.verifed-text {
+  font-size: 0.7em;
+  position: absolute;
+  top: 25px;
+  color: green;
 }
