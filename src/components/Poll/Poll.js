@@ -123,7 +123,7 @@ class Poll extends Component {
       }
     ];
 
-    const width = 300;
+    const width = 200;
     const height = 100;
     const margin = { top: 20, bottom: 20, left: 20, right: 20 };
 
@@ -151,7 +151,7 @@ class Poll extends Component {
 
     return (
       <div style={{ position: 'relative' }}>
-        <svg width={width} height={height}>
+        <svg className="chart" width={width} height={height}>
           {data.map((d, i) => {
             const barHeight = yMax - yPoint(d);
             return (

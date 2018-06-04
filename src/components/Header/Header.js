@@ -74,8 +74,10 @@ class App extends Component {
               <p className="welcome-text">Welcome {this.props.displayName}</p>
               {this.props.isContributor && (
                 <p className="verifed-text">
-                  <FontAwesomeIcon icon={['far', 'check-circle']} />verified
-                  contributor
+                  <FontAwesomeIcon
+                    className="verified-icon"
+                    icon={['far', 'check-circle']}
+                  />verified contributor
                 </p>
               )}
             </div>
