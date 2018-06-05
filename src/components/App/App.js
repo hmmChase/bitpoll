@@ -6,13 +6,11 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Header />
       <main>
         <p className="description">
-          Bitpoll helps determine consensus within the Bitcoin development
-          community by providing polls rescricted to developers of the Bitcoin
-          project.
+          Are you a Bitcoin developer? We want your opinion!
         </p>
         <Route exact path="/" component={Poll} />
       </main>

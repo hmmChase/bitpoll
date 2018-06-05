@@ -8,7 +8,7 @@ import faCheck from '@fortawesome/fontawesome-free-regular';
 import * as actions from '../../actions/index';
 import './Header.css';
 
-class App extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -58,14 +58,13 @@ class App extends Component {
   render() {
     return (
       <header>
-        <h1 className="App-title">
+        <h1 className="Header-title">
           <FontAwesomeIcon
             className="logo-icon"
             icon={['far', 'check-circle']}
           />
           Bitpoll
         </h1>
-
         {this.props.userId ? (
           <div className="signed-in-state">
             <div className="log-in-out">
@@ -79,7 +78,6 @@ class App extends Component {
                 </p>
               )}
             </div>
-
             <div className="sign-out-btn" onClick={this.logOut}>
               <span>Log out</span>
             </div>
@@ -113,4 +111,4 @@ export const mapDispatchToProps = dispatch => ({
     )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
