@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from '../../utils/firebase';
 import * as actions from '../../actions';
-import { Bar, BarStackHorizontal } from '@vx/shape';
+import { Bar } from '@vx/shape';
 import { Group } from '@vx/group';
 import { GradientLightgreenGreen } from '@vx/gradient';
-import { AxisTop, AxisLeft, AxisBottom } from '@vx/axis';
-
-import { letterFrequency } from '@vx/mock-data';
-
-import { scaleBand, scaleLinear, scaleOrdinal } from '@vx/scale';
-import { extent, max } from 'd3-array';
-import { timeParse, timeFormat } from 'd3-time-format';
+import { AxisBottom } from '@vx/axis';
+import { scaleBand, scaleLinear } from '@vx/scale';
 
 import './Poll.css';
 
@@ -123,7 +118,7 @@ class Poll extends Component {
       }
     ];
 
-    const width = 300;
+    const width = 200;
     const height = 100;
     const margin = { top: 20, bottom: 20, left: 20, right: 20 };
 
@@ -150,8 +145,8 @@ class Poll extends Component {
     const yPoint = compose(yScale, y);
 
     return (
-      <div style={{ position: 'relative' }}>
-        <svg width={width} height={height}>
+      <div>
+        <svg className="chart" width={width} height={height}>
           {data.map((d, i) => {
             const barHeight = yMax - yPoint(d);
             return (
@@ -171,14 +166,13 @@ class Poll extends Component {
             );
           })}
         </svg>
+        <div className="tally">
+          <span className="tally-left">{this.state.option1}</span>
+          <span>{this.state.option2}</span>
+        </div>
       </div>
     );
   };
-
-  // <div>
-  //   <p>Yes: {this.state.option1} votes</p>
-  //   <p>No: {this.state.option2} votes</p>
-  // </div>
 
   voteOptions = () => (
     <ul>
@@ -192,6 +186,7 @@ class Poll extends Component {
           checked={this.state.value === 'yes'}
           onChange={this.handleChange}
         />
+        <div className="check" />
         <label htmlFor="option1">Yes</label>
       </li>
       <li>
@@ -204,6 +199,7 @@ class Poll extends Component {
           checked={this.state.value === 'no'}
           onChange={this.handleChange}
         />
+        <div className="check" />
         <label htmlFor="option2">No</label>
       </li>
     </ul>
@@ -218,18 +214,18 @@ class Poll extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h3>Should the blocksize be increased?</h3>
-        {this.props.ifVoted ? (
+        <h3 className="poll-title">Should the blocksize be increased?</h3>
+        {this.props.userId && this.props.ifVoted ? (
           <div>
             {this.displayResults()}
-            <p>Thanks for voting!</p>
+            <p className="thanks">Thanks for voting!</p>
           </div>
         ) : this.props.userId && this.props.isContributor ? (
           <div>
             <div>{this.voteOptions()}</div> <div>{this.voteButton()}</div>
           </div>
         ) : (
-          <p>
+          <p className="vote-warning-text">
             You must be signed in and have contributed to the Bitcoin repo in
             order to vote.
           </p>
