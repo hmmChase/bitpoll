@@ -40,15 +40,12 @@ class Poll extends Component {
     const option1Ref = pollRef.child('option1');
     const option2Ref = pollRef.child('option2');
     const voterIDsRef = pollRef.child('voterIDs');
-
     option1Ref.on('value', snapshot => {
       const option1RefVal = snapshot.val();
-
       this.setState({
         option1: option1RefVal
       });
     });
-
     option2Ref.on('value', snapshot => {
       const option2RefVal = snapshot.val();
 
@@ -56,7 +53,6 @@ class Poll extends Component {
         option2: option2RefVal
       });
     });
-
     voterIDsRef.on('value', snapshot => {
       const voterIDsRef = snapshot.val();
       const voterIDs = voterIDsRef ? [this.state.voterIDs, ...voterIDsRef] : '';
@@ -67,7 +63,6 @@ class Poll extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       selected: name,
       value,
@@ -99,7 +94,6 @@ class Poll extends Component {
       .database()
       .ref()
       .child('poll');
-
     pollRef.update({
       [this.state.selected]: incrementOption,
       voterIDs: [this.props.userId]
@@ -117,18 +111,13 @@ class Poll extends Component {
         tally: this.state.option2
       }
     ];
-
     const width = 200;
     const height = 100;
     const margin = { top: 20, bottom: 20, left: 20, right: 20 };
-
     const x = d => d.option;
     const y = d => +d.tally;
-
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
-
-    // scales
     const xScale = scaleBand({
       rangeRound: [0, xMax],
       domain: data.map(x),
@@ -138,12 +127,9 @@ class Poll extends Component {
       rangeRound: [yMax, 0],
       domain: [0, Math.max(...data.map(y))]
     });
-
-    // Compose together the scale and accessor functions to get point functions
     const compose = (scale, accessor) => data => scale(accessor(data));
     const xPoint = compose(xScale, x);
     const yPoint = compose(yScale, y);
-
     return (
       <div>
         <svg className="chart" width={width} height={height}>

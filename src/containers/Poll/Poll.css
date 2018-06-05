@@ -4,7 +4,6 @@ form {
   width: 33%;
   max-width: 300px;
   min-width: 200px;
-  /* height: 300px; */
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -13,7 +12,6 @@ form {
   border: 1px lightblue solid;
   border-radius: 10px;
   margin: 0 auto;
-  /* padding: 0 20px 20px 20px; */
 }
 
 .poll-title {
