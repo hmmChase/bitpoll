@@ -1,15 +1,16 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
-import * as API from '../api';
+import { put, call, select, takeLatest } from 'redux-saga/effects';
+import { doFetch, cleanContributors, parseLinkHeader } from '../api';
 import * as actions from '../actions';
 
 export function* fetchContributors(action) {
-  const response = yield API.doFetch(action.url);
+  const response = yield call(doFetch, action.url);
   const contributors = yield response.json();
-  const cleanedContributors = yield API.cleanContributors(contributors);
+  const cleanedContributors = yield call(cleanContributors, contributors);
+
   yield put(actions.storeContributors(cleanedContributors));
 
   const links = yield response.headers.get('Link');
-  const parsedLinks = yield API.parseLinkHeader(links);
+  const parsedLinks = yield call(parseLinkHeader, links);
   const next = yield parsedLinks.next;
 
   if (next) {
