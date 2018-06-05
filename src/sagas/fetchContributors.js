@@ -1,5 +1,6 @@
 import { put, call, select, takeLatest } from 'redux-saga/effects';
 import { doFetch, cleanContributors, parseLinkHeader } from '../api';
+import { determineContributor } from './determineContributor';
 import * as actions from '../actions';
 
 export function* fetchContributors(action) {
@@ -20,19 +21,19 @@ export function* fetchContributors(action) {
   yield determineContributor();
 }
 
-export const stateContributors = state => state.contributors;
-export const stateUserId = state => state.user.userId;
+// export const stateContributors = state => state.contributors;
+// export const stateUserId = state => state.user.userId;
 
-export function* determineContributor() {
-  const contributors = yield select(stateContributors);
-  const userId = yield select(stateUserId);
-  const contribIds = yield Object.keys(contributors);
-  let isContributor = yield contribIds.includes(userId.toString());
+// export function* determineContributor() {
+//   const contributors = yield select(stateContributors);
+//   const userId = yield select(stateUserId);
+//   const contribIds = yield Object.keys(contributors);
+//   let isContributor = yield contribIds.includes(userId.toString());
 
-  isContributor = true;
+//   isContributor = true;
 
-  yield put(actions.storeIsContributor(isContributor));
-}
+//   yield put(actions.storeIsContributor(isContributor));
+// }
 
 export function* listenForGetContributors() {
   yield takeLatest('GET_CONTRIBUTORS', fetchContributors);

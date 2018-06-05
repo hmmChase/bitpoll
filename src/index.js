@@ -10,7 +10,7 @@ import './index.css';
 import App from './components/App/App';
 import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import listenForAddContributors from './sagas';
+import listenForAddContributors from './sagas/fetchContributors';
 
 const sagaMiddleware = createSagaMiddleware();
 
