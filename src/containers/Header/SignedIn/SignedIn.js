@@ -5,7 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCheck from '@fortawesome/fontawesome-free-regular';
 import './SignedIn.css';
 
-const SignedIn = props => {
+export const SignedIn = props => {
   return (
     <div className="signed-in-state">
       <div className="log-in-out">
