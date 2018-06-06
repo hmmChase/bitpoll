@@ -31,7 +31,7 @@ describe('doFetch', () => {
       })
     );
 
-    let expected = Error(`Network request failed. (error: 500)`);
+    const expected = Error(`Network request failed. (error: 500)`);
     await expect(doFetch()).rejects.toEqual(expected);
   });
 
@@ -39,7 +39,7 @@ describe('doFetch', () => {
     window.fetch = jest
       .fn()
       .mockImplementation(() => Promise.reject(Error('mock error')));
-    let expected = Error('Network request failed. (error: mock error)');
+    const expected = Error('Network request failed. (error: mock error)');
 
     await expect(doFetch()).rejects.toEqual(expected);
   });
@@ -68,7 +68,7 @@ describe('parseLinkHeader', () => {
   it('throws error if header length equals 0', () => {
     const header = [];
 
-    let expected = 'input must not be of zero length';
+    const expected = 'input must not be of zero length';
 
     expect(() => parseLinkHeader(header)).toThrow(expected);
   });
@@ -77,7 +77,7 @@ describe('parseLinkHeader', () => {
     const header =
       '<https://api.github.com/repositories/1181927/contributors?per_page=100&page=2>; rel="next", <https://api.github.com/repositories/1181927/contributors?per_page=100&page=4>; rel="last"';
 
-    let expected = {
+    const expected = {
       last:
         'https://api.github.com/repositories/1181927/contributors?per_page=100&page=4',
       next:
