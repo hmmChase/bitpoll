@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import './Options.css';
@@ -63,6 +64,12 @@ export const mapDispatchToProps = dispatch => ({
   storeVoteBtnDisabled: boolean =>
     dispatch(actions.storeVoteBtnDisabled(boolean))
 });
+
+Options.propTypes = {
+  storeSelectedOption: PropTypes.func.isRequired,
+  storeOptionValue: PropTypes.func.isRequired,
+  storeVoteBtnDisabled: PropTypes.func.isRequired
+};
 
 export default connect(
   null,

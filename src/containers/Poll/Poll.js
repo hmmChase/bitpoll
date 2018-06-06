@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import firebase from '../../utils/firebase';
 import * as actions from '../../actions';
@@ -132,6 +133,18 @@ export const mapDispatchToProps = dispatch => ({
   storeOption1Tally: tally => dispatch(actions.storeOption1Tally(tally)),
   storeOption2Tally: tally => dispatch(actions.storeOption2Tally(tally))
 });
+
+Poll.propTypes = {
+  userId: PropTypes.string,
+  isContributor: PropTypes.bool.isRequired,
+  ifVoted: PropTypes.bool.isRequired,
+  selectedOption: PropTypes.string,
+  value: PropTypes.string,
+  voteBtnDisabled: PropTypes.bool.isRequired,
+  storeIfVoted: PropTypes.func.isRequired,
+  storeOption1Tally: PropTypes.func.isRequired,
+  storeOption2Tally: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

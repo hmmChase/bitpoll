@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import fontawesome from '@fortawesome/fontawesome';
+import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faCheck from '@fortawesome/fontawesome-free-regular';
+import '@fortawesome/fontawesome-free-regular';
 import './SignedIn.css';
 
 export const SignedIn = props => {
@@ -30,5 +30,11 @@ export const mapStateToProps = state => ({
   displayName: state.user.displayName,
   isContributor: state.user.isContributor
 });
+
+SignedIn.propTypes = {
+  displayName: PropTypes.string.isRequired,
+  isContributor: PropTypes.bool.isRequired,
+  logOut: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(SignedIn);

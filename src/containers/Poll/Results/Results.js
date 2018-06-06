@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Bar } from '@vx/shape';
 import { Group } from '@vx/group';
@@ -76,5 +77,10 @@ export const mapStateToProps = state => ({
   option1Tally: state.poll.option1Tally,
   option2Tally: state.poll.option2Tally
 });
+
+Results.propTypes = {
+  option1Tally: PropTypes.number.isRequired,
+  option2Tally: PropTypes.number.isRequired
+};
 
 export default connect(mapStateToProps)(Results);

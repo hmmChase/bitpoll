@@ -1,7 +1,7 @@
 import React from 'react';
-import fontawesome from '@fortawesome/fontawesome';
+import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faGithub from '@fortawesome/fontawesome-free-brands';
+import '@fortawesome/fontawesome-free-brands';
 import './SignIn.css';
 
 const SignIn = props => {
@@ -11,6 +11,10 @@ const SignIn = props => {
       <span className="sign-in-btn-txt">Sign in with GitHub</span>
     </div>
   );
+};
+
+SignIn.propTypes = {
+  login: PropTypes.func.isRequired
 };
 
 export default SignIn;

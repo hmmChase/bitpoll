@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { auth, provider } from '../../utils/firebase';
 import SignIn from './SignIn/SignIn';
 import SignedIn from './SignedIn/SignedIn';
-import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faGithub from '@fortawesome/fontawesome-free-brands';
-import faCheck from '@fortawesome/fontawesome-free-regular';
+import '@fortawesome/fontawesome-free-regular';
 import * as actions from '../../actions/index';
 import './Header.css';
 
@@ -83,6 +82,13 @@ export const mapDispatchToProps = dispatch => ({
       )
     )
 });
+
+Header.propTypes = {
+  userId: PropTypes.string,
+  storeUser: PropTypes.func.isRequired,
+  storeLogOut: PropTypes.func.isRequired,
+  getContributors: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,
