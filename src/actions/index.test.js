@@ -4,16 +4,21 @@ import {
   storeContributors,
   getContributors,
   storeIsContributor,
-  storeIfVoted
+  storeIfVoted,
+  storeSelectedOption,
+  storeOptionValue,
+  storeVoteBtnDisabled,
+  storeOption1Tally,
+  storeOption2Tally
 } from './index';
 
 describe('Actions', () => {
   describe('storeUser', () => {
     it('has a type of STORE_USER', () => {
-      let user = {};
+      const user = {};
 
-      let actual = storeUser(user);
-      let expected = {
+      const actual = storeUser(user);
+      const expected = {
         type: 'STORE_USER',
         user
       };
@@ -24,8 +29,8 @@ describe('Actions', () => {
 
   describe('storeLogOut', () => {
     it('has a type of STORE_LOG_OUT', () => {
-      let actual = storeLogOut();
-      let expected = {
+      const actual = storeLogOut();
+      const expected = {
         type: 'STORE_LOG_OUT'
       };
 
@@ -35,10 +40,10 @@ describe('Actions', () => {
 
   describe('storeContributors', () => {
     it('has a type of STORE_CONTRIBUTORS', () => {
-      let contributors = {};
+      const contributors = {};
 
-      let actual = storeContributors(contributors);
-      let expected = {
+      const actual = storeContributors(contributors);
+      const expected = {
         type: 'STORE_CONTRIBUTORS',
         contributors
       };
@@ -49,10 +54,10 @@ describe('Actions', () => {
 
   describe('getContributors', () => {
     it('has a type of GET_CONTRIBUTORS', () => {
-      let url = '';
+      const url = 'localhost:3000/api';
 
-      let actual = getContributors(url);
-      let expected = {
+      const actual = getContributors(url);
+      const expected = {
         type: 'GET_CONTRIBUTORS',
         url
       };
@@ -63,10 +68,10 @@ describe('Actions', () => {
 
   describe('storeIsContributor', () => {
     it('has a type of STORE_IS_CONTRIBUTOR', () => {
-      let boolean = false;
+      const boolean = false;
 
-      let actual = storeIsContributor(boolean);
-      let expected = {
+      const actual = storeIsContributor(boolean);
+      const expected = {
         type: 'STORE_IS_CONTRIBUTOR',
         boolean
       };
@@ -77,12 +82,82 @@ describe('Actions', () => {
 
   describe('storeIfVoted', () => {
     it('has a type of STORE_IF_VOTED', () => {
-      let boolean = false;
+      const boolean = false;
 
-      let actual = storeIfVoted(boolean);
-      let expected = {
+      const actual = storeIfVoted(boolean);
+      const expected = {
         type: 'STORE_IF_VOTED',
         boolean
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('storeSelectedOption', () => {
+    it('has a type of STORE_SELECTED_OPTION', () => {
+      const option = 'option1';
+
+      const actual = storeSelectedOption(option);
+      const expected = {
+        type: 'STORE_SELECTED_OPTION',
+        option
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('storeOptionValue', () => {
+    it('has a type of STORE_OPTION_VALUE', () => {
+      const value = '12';
+
+      const actual = storeOptionValue(value);
+      const expected = {
+        type: 'STORE_OPTION_VALUE',
+        value
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('storeVoteBtnDisabled', () => {
+    it('has a type of STORE_VOTE_BTN_DISABLED', () => {
+      const boolean = false;
+
+      const actual = storeVoteBtnDisabled(boolean);
+      const expected = {
+        type: 'STORE_VOTE_BTN_DISABLED',
+        boolean
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('storeOption1Tally', () => {
+    it('has a type of STORE_OPTION1_TALLY', () => {
+      const tally = 32;
+
+      const actual = storeOption1Tally(tally);
+      const expected = {
+        type: 'STORE_OPTION1_TALLY',
+        tally
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('storeOption2Tally', () => {
+    it('has a type of STORE_OPTION2_TALLY', () => {
+      const tally = 32;
+
+      const actual = storeOption2Tally(tally);
+      const expected = {
+        type: 'STORE_OPTION2_TALLY',
+        tally
       };
 
       expect(actual).toEqual(expected);

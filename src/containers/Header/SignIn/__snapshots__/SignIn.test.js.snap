@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignIn matches snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SignIn
+    login={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <FontAwesomeIcon
+          border={false}
+          className="github-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+                    Array [
+                              "fab",
+                              "github",
+                            ]
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+/>,
+        <span
+          className="sign-in-btn-txt"
+>
+          Sign in with GitHub
+</span>,
+      ],
+      "className": "sign-in-btn",
+      "onClick": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "border": false,
+          "className": "github-icon",
+          "fixedWidth": false,
+          "flip": null,
+          "icon": Array [
+            "fab",
+            "github",
+          ],
+          "listItem": false,
+          "mask": null,
+          "name": "",
+          "pull": null,
+          "pulse": false,
+          "rotation": null,
+          "size": null,
+          "spin": false,
+          "symbol": false,
+          "transform": null,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Sign in with GitHub",
+          "className": "sign-in-btn-txt",
+        },
+        "ref": null,
+        "rendered": "Sign in with GitHub",
+        "type": "span",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <FontAwesomeIcon
+            border={false}
+            className="github-icon"
+            fixedWidth={false}
+            flip={null}
+            icon={
+                        Array [
+                                    "fab",
+                                    "github",
+                                  ]
+            }
+            listItem={false}
+            mask={null}
+            name=""
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size={null}
+            spin={false}
+            symbol={false}
+            transform={null}
+/>,
+          <span
+            className="sign-in-btn-txt"
+>
+            Sign in with GitHub
+</span>,
+        ],
+        "className": "sign-in-btn",
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "border": false,
+            "className": "github-icon",
+            "fixedWidth": false,
+            "flip": null,
+            "icon": Array [
+              "fab",
+              "github",
+            ],
+            "listItem": false,
+            "mask": null,
+            "name": "",
+            "pull": null,
+            "pulse": false,
+            "rotation": null,
+            "size": null,
+            "spin": false,
+            "symbol": false,
+            "transform": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Sign in with GitHub",
+            "className": "sign-in-btn-txt",
+          },
+          "ref": null,
+          "rendered": "Sign in with GitHub",
+          "type": "span",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

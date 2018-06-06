@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 import rootReducer from '../index';
 import { userReducer } from '../userReducer';
 import { contribReducer } from '../contribReducer';
+import { pollReducer } from '../pollReducer';
 
 const store = createStore(rootReducer);
 
@@ -11,5 +12,8 @@ describe('rootReducer', () => {
       userReducer({ isContributor: false, ifVoted: false }, {})
     );
     expect(store.getState().contributors).toEqual(contribReducer({}, {}));
+    expect(store.getState().poll).toEqual(
+      pollReducer({ voteBtnDisabled: true }, {})
+    );
   });
 });

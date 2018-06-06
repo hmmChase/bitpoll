@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { auth, provider } from '../../utils/firebase';
-import fontawesome from '@fortawesome/fontawesome';
+import SignIn from './SignIn/SignIn';
+import SignedIn from './SignedIn/SignedIn';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faGithub from '@fortawesome/fontawesome-free-brands';
-import faCheck from '@fortawesome/fontawesome-free-regular';
+import '@fortawesome/fontawesome-free-regular';
 import * as actions from '../../actions/index';
 import './Header.css';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
+export class Header extends Component {
   componentDidMount() {
     this.refreshLogin();
   }
@@ -32,10 +27,9 @@ class Header extends Component {
     this.setLogin(user);
   };
 
-  authGitHub = () => {
-    return auth.signInWithPopup(provider).then(result => {
-      return result.user;
-    });
+  authGitHub = async () => {
+    const result = await auth.signInWithPopup(provider);
+    return result.user;
   };
 
   setLogin = user => {
@@ -49,10 +43,9 @@ class Header extends Component {
     displayName: user.providerData[0].displayName
   });
 
-  logOut = () => {
-    auth.signOut().then(() => {
-      this.props.storeLogOut();
-    });
+  logOut = async () => {
+    await auth.signOut();
+    this.props.storeLogOut();
   };
 
   render() {
@@ -66,27 +59,9 @@ class Header extends Component {
           Bitpoll
         </h1>
         {this.props.userId ? (
-          <div className="signed-in-state">
-            <div className="log-in-out">
-              <p className="welcome-text">Welcome {this.props.displayName}</p>
-              {this.props.isContributor && (
-                <p className="verifed-text">
-                  <FontAwesomeIcon
-                    className="verified-icon"
-                    icon={['far', 'check-circle']}
-                  />verified contributor
-                </p>
-              )}
-            </div>
-            <div className="sign-out-btn" onClick={this.logOut}>
-              <span>Log out</span>
-            </div>
-          </div>
+          <SignedIn logOut={this.logOut} />
         ) : (
-          <div className="sign-in-btn" onClick={this.login}>
-            <FontAwesomeIcon className="github-icon" icon={['fab', 'github']} />
-            <span className="sign-in-btn-txt">Sign in with GitHub</span>
-          </div>
+          <SignIn login={this.login} />
         )}
       </header>
     );
@@ -94,10 +69,7 @@ class Header extends Component {
 }
 
 export const mapStateToProps = state => ({
-  displayName: state.user.displayName,
-  userId: state.user.userId,
-  isContributor: state.user.isContributor,
-  contributors: state.contributors
+  userId: state.user.userId
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -111,4 +83,14 @@ export const mapDispatchToProps = dispatch => ({
     )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+Header.propTypes = {
+  userId: PropTypes.string,
+  storeUser: PropTypes.func.isRequired,
+  storeLogOut: PropTypes.func.isRequired,
+  getContributors: PropTypes.func.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

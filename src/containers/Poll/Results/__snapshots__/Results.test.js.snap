@@ -1,0 +1,616 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results matches snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    option1Tally={34}
+    option2Tally={65}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <svg
+          className="chart"
+          height={100}
+          width={200}
+>
+          <Group>
+                    <Unknown
+                              id="LightgreenGreen"
+                    />
+                    <AxisBottom
+                              scale={[Function]}
+                              stroke=""
+                              top={60}
+                    />
+                    <Bar
+                              fill="url(#LightgreenGreen)"
+                              height={31}
+                              width={40}
+                              x={27}
+                              y={29}
+                    />
+          </Group>
+          <Group>
+                    <Unknown
+                              id="LightgreenGreen"
+                    />
+                    <AxisBottom
+                              scale={[Function]}
+                              stroke=""
+                              top={60}
+                    />
+                    <Bar
+                              fill="url(#LightgreenGreen)"
+                              height={60}
+                              width={40}
+                              x={93}
+                              y={0}
+                    />
+          </Group>
+</svg>,
+        <div
+          className="tally"
+>
+          <span
+                    className="tally-left"
+          >
+                    34
+          </span>
+          <span>
+                    65
+          </span>
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Group>
+              <Unknown
+                            id="LightgreenGreen"
+              />
+              <AxisBottom
+                            scale={[Function]}
+                            stroke=""
+                            top={60}
+              />
+              <Bar
+                            fill="url(#LightgreenGreen)"
+                            height={31}
+                            width={40}
+                            x={27}
+                            y={29}
+              />
+</Group>,
+            <Group>
+              <Unknown
+                            id="LightgreenGreen"
+              />
+              <AxisBottom
+                            scale={[Function]}
+                            stroke=""
+                            top={60}
+              />
+              <Bar
+                            fill="url(#LightgreenGreen)"
+                            height={60}
+                            width={40}
+                            x={93}
+                            y={0}
+              />
+</Group>,
+          ],
+          "className": "chart",
+          "height": 100,
+          "width": 200,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "bar-0",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <Unknown
+                  id="LightgreenGreen"
+/>,
+                <AxisBottom
+                  scale={[Function]}
+                  stroke=""
+                  top={60}
+/>,
+                <Bar
+                  fill="url(#LightgreenGreen)"
+                  height={31}
+                  width={40}
+                  x={27}
+                  y={29}
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "id": "LightgreenGreen",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "scale": [Function],
+                  "stroke": "",
+                  "top": 60,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "fill": "url(#LightgreenGreen)",
+                  "height": 31,
+                  "width": 40,
+                  "x": 27,
+                  "y": 29,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "bar-1",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <Unknown
+                  id="LightgreenGreen"
+/>,
+                <AxisBottom
+                  scale={[Function]}
+                  stroke=""
+                  top={60}
+/>,
+                <Bar
+                  fill="url(#LightgreenGreen)"
+                  height={60}
+                  width={40}
+                  x={93}
+                  y={0}
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "id": "LightgreenGreen",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "scale": [Function],
+                  "stroke": "",
+                  "top": 60,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "fill": "url(#LightgreenGreen)",
+                  "height": 60,
+                  "width": 40,
+                  "x": 93,
+                  "y": 0,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": "svg",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <span
+              className="tally-left"
+>
+              34
+</span>,
+            <span>
+              65
+</span>,
+          ],
+          "className": "tally",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": 34,
+              "className": "tally-left",
+            },
+            "ref": null,
+            "rendered": 34,
+            "type": "span",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": 65,
+            },
+            "ref": null,
+            "rendered": 65,
+            "type": "span",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <svg
+            className="chart"
+            height={100}
+            width={200}
+>
+            <Group>
+                        <Unknown
+                                    id="LightgreenGreen"
+                        />
+                        <AxisBottom
+                                    scale={[Function]}
+                                    stroke=""
+                                    top={60}
+                        />
+                        <Bar
+                                    fill="url(#LightgreenGreen)"
+                                    height={31}
+                                    width={40}
+                                    x={27}
+                                    y={29}
+                        />
+            </Group>
+            <Group>
+                        <Unknown
+                                    id="LightgreenGreen"
+                        />
+                        <AxisBottom
+                                    scale={[Function]}
+                                    stroke=""
+                                    top={60}
+                        />
+                        <Bar
+                                    fill="url(#LightgreenGreen)"
+                                    height={60}
+                                    width={40}
+                                    x={93}
+                                    y={0}
+                        />
+            </Group>
+</svg>,
+          <div
+            className="tally"
+>
+            <span
+                        className="tally-left"
+            >
+                        34
+            </span>
+            <span>
+                        65
+            </span>
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Group>
+                <Unknown
+                                id="LightgreenGreen"
+                />
+                <AxisBottom
+                                scale={[Function]}
+                                stroke=""
+                                top={60}
+                />
+                <Bar
+                                fill="url(#LightgreenGreen)"
+                                height={31}
+                                width={40}
+                                x={27}
+                                y={29}
+                />
+</Group>,
+              <Group>
+                <Unknown
+                                id="LightgreenGreen"
+                />
+                <AxisBottom
+                                scale={[Function]}
+                                stroke=""
+                                top={60}
+                />
+                <Bar
+                                fill="url(#LightgreenGreen)"
+                                height={60}
+                                width={40}
+                                x={93}
+                                y={0}
+                />
+</Group>,
+            ],
+            "className": "chart",
+            "height": 100,
+            "width": 200,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "bar-0",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <Unknown
+                    id="LightgreenGreen"
+/>,
+                  <AxisBottom
+                    scale={[Function]}
+                    stroke=""
+                    top={60}
+/>,
+                  <Bar
+                    fill="url(#LightgreenGreen)"
+                    height={31}
+                    width={40}
+                    x={27}
+                    y={29}
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "id": "LightgreenGreen",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "scale": [Function],
+                    "stroke": "",
+                    "top": 60,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "fill": "url(#LightgreenGreen)",
+                    "height": 31,
+                    "width": 40,
+                    "x": 27,
+                    "y": 29,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "bar-1",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <Unknown
+                    id="LightgreenGreen"
+/>,
+                  <AxisBottom
+                    scale={[Function]}
+                    stroke=""
+                    top={60}
+/>,
+                  <Bar
+                    fill="url(#LightgreenGreen)"
+                    height={60}
+                    width={40}
+                    x={93}
+                    y={0}
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "id": "LightgreenGreen",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "scale": [Function],
+                    "stroke": "",
+                    "top": 60,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "fill": "url(#LightgreenGreen)",
+                    "height": 60,
+                    "width": 40,
+                    "x": 93,
+                    "y": 0,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": "svg",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="tally-left"
+>
+                34
+</span>,
+              <span>
+                65
+</span>,
+            ],
+            "className": "tally",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": 34,
+                "className": "tally-left",
+              },
+              "ref": null,
+              "rendered": 34,
+              "type": "span",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": 65,
+              },
+              "ref": null,
+              "rendered": 65,
+              "type": "span",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
