@@ -12,7 +12,7 @@ Chase Richard [GitHub](https://github.com/hmmChase)
 
 ### Final design:
 
-![Project Screenshot](./assets/Bitpoll-final-1.png.png)
+![Project Screenshot](./assets/Bitpoll-final-1.png)
 
 ## Set Up
 
