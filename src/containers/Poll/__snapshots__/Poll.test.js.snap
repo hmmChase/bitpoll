@@ -1,3 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Poll matches the snapshot 1`] = `undefined`;
+exports[`Poll matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Poll />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h3
+          className="poll-title"
+>
+          Should the blocksize be increased?
+</h3>,
+        <p
+          className="vote-warning-text"
+>
+          You must be signed in and have contributed to the Bitcoin repo in order to vote.
+</p>,
+      ],
+      "onSubmit": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Should the blocksize be increased?",
+          "className": "poll-title",
+        },
+        "ref": null,
+        "rendered": "Should the blocksize be increased?",
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "You must be signed in and have contributed to the Bitcoin repo in order to vote.",
+          "className": "vote-warning-text",
+        },
+        "ref": null,
+        "rendered": "You must be signed in and have contributed to the Bitcoin repo in order to vote.",
+        "type": "p",
+      },
+    ],
+    "type": "form",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h3
+            className="poll-title"
+>
+            Should the blocksize be increased?
+</h3>,
+          <p
+            className="vote-warning-text"
+>
+            You must be signed in and have contributed to the Bitcoin repo in order to vote.
+</p>,
+        ],
+        "onSubmit": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Should the blocksize be increased?",
+            "className": "poll-title",
+          },
+          "ref": null,
+          "rendered": "Should the blocksize be increased?",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "You must be signed in and have contributed to the Bitcoin repo in order to vote.",
+            "className": "vote-warning-text",
+          },
+          "ref": null,
+          "rendered": "You must be signed in and have contributed to the Bitcoin repo in order to vote.",
+          "type": "p",
+        },
+      ],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
