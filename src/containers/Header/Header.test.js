@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header } from './Header';
-import { auth, provider } from '../../utils/firebase';
+import firebase, { auth, provider } from '../../utils/firebase';
 jest.mock('../../utils/firebase.js');
 
 describe('Header', () => {
@@ -9,6 +9,7 @@ describe('Header', () => {
   let mockProps;
 
   beforeEach(() => {
+    jest.resetAllMocks();
     mockProps = {
       contributors: {},
       displayName: 'Chase',
@@ -23,7 +24,14 @@ describe('Header', () => {
     });
   });
 
-  it('matches the snapshot', () => {
+  it('matches snapshot with userId set', () => {
+    expect(header).toMatchSnapshot();
+  });
+
+  it('matches snapshot with no userId set', () => {
+    mockProps.userId = '';
+    header = shallow(<Header {...mockProps} />);
+
     expect(header).toMatchSnapshot();
   });
 
@@ -43,36 +51,112 @@ describe('Header', () => {
       expect(auth.onAuthStateChanged).toHaveBeenCalledTimes(1);
     });
 
-    // it('calls setLogin', () => {
-    //   const user = { id: 1111 };
+    it.skip('calls setLogin', () => {
+      const setLogin = (header.instance().setLogin = jest.fn());
+      header.instance().refreshLogin();
 
-    //   auth.onAuthStateChanged(user);
-
-    //   const setLogin = (header.instance().setLogin = jest.fn());
-    //   header.instance().refreshLogin();
-
-    //   expect(setLogin).toHaveBeenCalledTimes(1);
-    // });
+      expect(setLogin).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('login', () => {
-    it.only('calls authGitHub', async () => {
-      console.log('asdf');
-
+    it('calls authGitHub', async () => {
       const authGitHub = (header.instance().authGitHub = jest.fn());
-      authGitHub.mockImplementation(() => Promise.resolve({}));
-
-      console.log('hi');
-
-      console.log('authGitHub: ', authGitHub);
-
+      const setLogin = (header.instance().setLogin = jest.fn());
       await header.instance().login();
 
-      console.log('bye');
+      expect(authGitHub).toHaveBeenCalledTimes(1);
+    });
 
-      console.log('authGitHub: ', authGitHub);
+    it('calls setLogin with correct params', async () => {
+      const mockUser = { id: 111 };
+      const authGitHub = (header.instance().authGitHub = jest.fn());
+      authGitHub.mockImplementation(() => Promise.resolve(mockUser));
+      const setLogin = (header.instance().setLogin = jest.fn());
+      await header.instance().login();
 
-      await expect(await authGitHub).toHaveBeenCalledTimes(1);
+      expect(setLogin).toHaveBeenCalledTimes(1);
+      expect(setLogin).toHaveBeenCalledWith(mockUser);
+    });
+  });
+
+  describe('authGitHub', () => {
+    it('calls auth.signInWithPopup', async () => {
+      const mockUser = { id: 111 };
+      auth.signInWithPopup.mockImplementation(() => Promise.resolve(mockUser));
+      await header.instance().authGitHub();
+
+      expect(auth.signInWithPopup).toHaveBeenCalledTimes(1);
+      expect(auth.signInWithPopup).toHaveBeenCalledWith(provider);
+    });
+
+    it.skip('returns a user object', async () => {
+      const mockUser = { id: 111 };
+      await auth.signInWithPopup.mockImplementation(() =>
+        Promise.resolve(mockUser)
+      );
+      const authGitHub = header.instance().authGitHub();
+
+      await expect(authGitHub).resolves.toEqual(mockUser);
+    });
+  });
+
+  describe('setLogin', () => {
+    it('calls cleanUser with correct params', () => {
+      const mockUser = { id: 111 };
+      const cleanUser = (header.instance().cleanUser = jest.fn());
+      header.instance().setLogin(mockUser);
+
+      expect(cleanUser).toHaveBeenCalledTimes(1);
+      expect(cleanUser).toHaveBeenCalledWith(mockUser);
+    });
+
+    it('calls storeUser with correct params', () => {
+      const mockCleanUser = { id: 111 };
+      const cleanUser = (header.instance().cleanUser = jest.fn());
+      cleanUser.mockImplementation(() => mockCleanUser);
+      header.instance().setLogin();
+
+      expect(mockProps.storeUser).toHaveBeenCalledTimes(1);
+      expect(mockProps.storeUser).toHaveBeenCalledWith(mockCleanUser);
+    });
+
+    it('calls getContributors', () => {
+      const cleanUser = (header.instance().cleanUser = jest.fn());
+      header.instance().setLogin();
+
+      expect(mockProps.getContributors).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('cleanUser', () => {
+    it('returns a cleaned user object', () => {
+      const mockUser = {
+        providerData: [
+          { uid: 111, displayName: 'Chase', somethingElse: 'mock property' }
+        ]
+      };
+      const expected = {
+        displayName: 'Chase',
+        userId: 111
+      };
+      const cleanUser = header.instance().cleanUser(mockUser);
+
+      expect(cleanUser).toEqual(expected);
+    });
+  });
+
+  describe('logOut', () => {
+    it('calls auth.signOut', async () => {
+      await header.instance().logOut();
+
+      expect(auth.signOut).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls props.storeLogOutt', async () => {
+      await header.instance().logOut();
+
+      expect(mockProps.storeLogOut).toHaveBeenCalledTimes(1);
     });
   });
 });
