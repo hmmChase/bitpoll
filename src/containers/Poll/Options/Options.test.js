@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Options } from './Options';
+import { Options, mapDispatchToProps } from './Options';
+import * as actions from '../../../actions';
 
 describe('Options', () => {
   let options;
@@ -80,6 +81,35 @@ describe('Options', () => {
 
       expect(mockProps.storeVoteBtnDisabled).toHaveBeenCalledTimes(1);
       expect(mockProps.storeVoteBtnDisabled).toHaveBeenCalledWith(false);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch on storeSelectedOption', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.storeSelectedOption();
+      mappedProps.storeSelectedOption();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('calls dispatch on storeOptionValue', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.storeOptionValue();
+      mappedProps.storeOptionValue();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('calls dispatch on storeVoteBtnDisabled', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.storeVoteBtnDisabled();
+      mappedProps.storeVoteBtnDisabled();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
   });
 });

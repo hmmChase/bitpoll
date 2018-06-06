@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignedIn } from './SignedIn';
+import { SignedIn, mapStateToProps } from './SignedIn';
 
 describe('SignedIn', () => {
   let signedIn;
@@ -30,5 +30,23 @@ describe('SignedIn', () => {
     signedIn.find('.sign-out-btn').simulate('click');
 
     expect(mockProps.logOut).toHaveBeenCalledTimes(1);
+  });
+
+  describe('mapStateToProps', () => {
+    it('maps state properties to props', () => {
+      const mockState = {
+        user: {
+          displayName: 'Chase',
+          isContributor: false
+        }
+      };
+      const expected = {
+        displayName: 'Chase',
+        isContributor: false
+      };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
   });
 });

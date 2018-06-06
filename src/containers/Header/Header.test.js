@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { Header, mapStateToProps, mapDispatchToProps } from './Header';
 import firebase, { auth, provider } from '../../utils/firebase';
+import * as actions from '../../actions';
 jest.mock('../../utils/firebase.js');
 
 describe('Header', () => {
@@ -157,6 +158,53 @@ describe('Header', () => {
       await header.instance().logOut();
 
       expect(mockProps.storeLogOut).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('mapStateToProps', () => {
+    it('maps state properties to props', () => {
+      const mockState = {
+        user: {
+          userId: '3242'
+        }
+      };
+      const expected = {
+        userId: '3242'
+      };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch on storeUser', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.storeUser();
+      mappedProps.storeUser();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('calls dispatch on storeLogOut', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.storeLogOut();
+      mappedProps.storeLogOut();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('calls dispatch on getContributors', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = actions.getContributors(
+        'https://api.github.com/repos/bitcoin/bitcoin/contributors?per_page=100'
+      );
+      mappedProps.getContributors();
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
   });
 });
