@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest } from 'redux-saga/effects';
 import { doFetch, cleanContributors, parseLinkHeader } from '../api';
 import { determineContributor } from './determineContributor';
 import * as actions from '../actions';

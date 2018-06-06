@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest } from 'redux-saga/effects';
+import { put, select } from 'redux-saga/effects';
 import * as actions from '../actions';
 
 export const stateContributors = state => state.contributors;
