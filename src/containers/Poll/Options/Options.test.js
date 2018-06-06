@@ -24,7 +24,6 @@ describe('Options', () => {
     const mockEvent = { target: { name: 'option1', value: 'yes' } };
     const handleChange = (options.instance().handleChange = jest.fn());
     options.find('.option1').simulate('change', mockEvent);
-    console.log(options.find('.option1').debug());
 
     expect(handleChange).toHaveBeenCalledTimes(1);
   });

@@ -9,7 +9,6 @@ import 'sanitize.css/sanitize.css';
 import './index.css';
 import App from './components/App/App';
 import rootReducer from './reducers';
-import registerServiceWorker from './registerServiceWorker';
 import listenForAddContributors from './sagas/fetchContributors';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -30,4 +29,3 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById('root'));
-registerServiceWorker();

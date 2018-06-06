@@ -22,41 +22,35 @@ export const Results = props => {
   const width = 200;
   const height = 100;
   const margin = { top: 20, bottom: 20, left: 20, right: 20 };
-  const x = d => d.option;
-  const y = d => +d.tally;
+  const xAxis = data => data.option;
+  const yAxis = data => +data.tally;
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
   const xScale = scaleBand({
     rangeRound: [0, xMax],
-    domain: data.map(x),
+    domain: data.map(xAxis),
     padding: 0.4
   });
   const yScale = scaleLinear({
     rangeRound: [yMax, 0],
-    domain: [0, Math.max(...data.map(y))]
+    domain: [0, Math.max(...data.map(yAxis))]
   });
   const compose = (scale, accessor) => data => scale(accessor(data));
-  const xPoint = compose(
-    xScale,
-    x
-  );
-  const yPoint = compose(
-    yScale,
-    y
-  );
+  const xPoint = compose(xScale, xAxis);
+  const yPoint = compose(yScale, yAxis);
 
   return (
     <div>
       <svg className="chart" width={width} height={height}>
-        {data.map((d, i) => {
-          const barHeight = yMax - yPoint(d);
+        {data.map((datum, index) => {
+          const barHeight = yMax - yPoint(datum);
           return (
-            <Group key={`bar-${i}`}>
+            <Group key={`bar-${index}`}>
               <GradientLightgreenGreen id="LightgreenGreen" />
               <AxisBottom scale={xScale} top={yMax} stroke={''} />
 
               <Bar
-                x={xPoint(d)}
+                x={xPoint(datum)}
                 y={yMax - barHeight}
                 height={barHeight}
                 width={xScale.bandwidth()}

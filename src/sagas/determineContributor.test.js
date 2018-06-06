@@ -1,5 +1,5 @@
 import * as sagas from './determineContributor';
-import { put, call, select, takeLatest } from 'redux-saga/effects';
+import { select } from 'redux-saga/effects';
 
 describe('stateContributors', () => {
   it('returns contributors', () => {
