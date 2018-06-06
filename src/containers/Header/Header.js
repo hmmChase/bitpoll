@@ -28,10 +28,9 @@ export class Header extends Component {
     this.setLogin(user);
   };
 
-  authGitHub = () => {
-    return auth.signInWithPopup(provider).then(result => {
-      return result.user;
-    });
+  authGitHub = async () => {
+    const result = await auth.signInWithPopup(provider);
+    return result.user;
   };
 
   setLogin = user => {
@@ -45,10 +44,9 @@ export class Header extends Component {
     displayName: user.providerData[0].displayName
   });
 
-  logOut = () => {
-    auth.signOut().then(() => {
-      this.props.storeLogOut();
-    });
+  logOut = async () => {
+    await auth.signOut();
+    this.props.storeLogOut();
   };
 
   render() {
@@ -86,4 +84,7 @@ export const mapDispatchToProps = dispatch => ({
     )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
