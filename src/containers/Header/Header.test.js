@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
-import firebase, { auth, provider } from '../../utils/firebase';
+import { auth, provider } from '../../utils/firebase';
 import * as actions from '../../actions';
 jest.mock('../../utils/firebase.js');
 
@@ -63,7 +63,7 @@ describe('Header', () => {
   describe('login', () => {
     it('calls authGitHub', async () => {
       const authGitHub = (header.instance().authGitHub = jest.fn());
-      const setLogin = (header.instance().setLogin = jest.fn());
+      header.instance().setLogin = jest.fn();
       await header.instance().login();
 
       expect(authGitHub).toHaveBeenCalledTimes(1);
@@ -123,7 +123,7 @@ describe('Header', () => {
     });
 
     it('calls getContributors', () => {
-      const cleanUser = (header.instance().cleanUser = jest.fn());
+      header.instance().cleanUser = jest.fn();
       header.instance().setLogin();
 
       expect(mockProps.getContributors).toHaveBeenCalledTimes(1);

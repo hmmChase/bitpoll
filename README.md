@@ -4,15 +4,15 @@ Bitpoll helps determine consensus within the Bitcoin development community by pr
 
 ### Project team:
 
-Chase Richard [GitHub](https://github.com/hmmChase) 
+Chase Richard [GitHub](https://github.com/hmmChase)
 
 ### Original comp:
 
-<!-- ![Comp Spec](./src/assets/HeadCount1.png)   -->
+![Comp Spec](./assets/bitpoll1.png)
 
-### Our design:
+### Final design:
 
-<!-- ![Project Screenshot](./src/assets/HeadCount2.png) -->
+![Project Screenshot](./assets/Bitpoll-final-1.png.png)
 
 ## Set Up
 

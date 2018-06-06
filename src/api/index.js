@@ -23,8 +23,8 @@ export const parseLinkHeader = header => {
   }
   const parts = header.split(',');
   const links = {};
-  for (let i = 0; i < parts.length; i++) {
-    const section = parts[i].split(';');
+  for (let index = 0; index < parts.length; index++) {
+    const section = parts[index].split(';');
     if (section.length !== 2) {
       throw new Error("section could not be split on ';'");
     }
