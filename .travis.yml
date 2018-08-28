@@ -2,3 +2,12 @@ language: node_js
 node_js: '10'
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: 28B368xf7STa0WdqUEDqdMh0iGI27Q0MlgxedsNxhs39GcPwzkdhQacIQqFZp4eQMb5lBfi4BSBtIhldEfhZTed5HRNqffrGQ+kG/ylFB/d6ao3uc9KH6qQceQh/H8Yfiz9prFuUMQRqomLYVEy5SL0QmGp7H0BglEz66R85QdXsyHjfvPAP7zB/6XUYAMF2Si7frG54QmFsCgf7dVg4+ueBcXbmOuGDCvR8EJcCmvA+Rt+TaGFRLXUUZkXal0I2Gf7t0wP27WtYJMjr7vbqb9SSYQbNHwmTD6BO88KP6F3Jj2rbmxGPSIKQ++ILFrz/dbWWtH0ChgNwuIeCDhiDgtE5k/3lrcN/0PjZ+VLvNkj/iWVDW5hBLhmUINUGdJBx/WstSpYhA7iMVtgV7WGD+vhwyO/gLt99xPoCNC6qPXaYJligeM1iTTCocGkrV4CeW8A2jza5OBOCLnNtfMeWY6oUx6GhWMGUZq8hobzGHBGZz1GwsifRNz+uBNABDTq9qoSygRAhDC6rypdQ42SVxW52B6Ndvos92Hp52lvYc5w8k68VLj/SSZJq6K3KJaI65nnlOS8k417zjeJfoRN0RDlfeAfsbajMCnRJaiAYNLCqjyhr1r1JPf7oHTjr7UgUEpOPgmBD7V6Qhktq9pD3rP15/sEl+5Cd14npISfZLOo=
+  app: bitpoll
+  skip_cleanup: true
+  on:
+    repo: hmmChase/bitpoll
+    branch: master
