@@ -4,6 +4,12 @@
 
 Bitpoll helps determine consensus within the Bitcoin development community by providing polls rescricted to developers of the Bitcoin project.
 
+### Design comp:
+
+![Comp Spec](./assets/bitpoll1.png)
+
+### Implemented design:
+
 ![Project Screenshot](./assets/Bitpoll-final-1.png)
 
 ## Set Up
